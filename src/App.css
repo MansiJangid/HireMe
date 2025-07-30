@@ -1,0 +1,67 @@
+.grid-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Optional: light text for contrast */
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #0d0d0d 0%, #050505 100%);
+  color: #f0f0f0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  z-index: -1;
+}
+
+.grid-background::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+}
+
+.grid-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='1' fill='white' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='1.5' fill='white' opacity='0.2'/%3E%3Ccircle cx='80' cy='70' r='1' fill='white' opacity='0.2'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Animated Top Glow */
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
+  background: radial-gradient(circle at top center, rgba(81, 170, 225, 0.664), transparent 50%);
+  animation: glowMove 6s ease-in-out infinite alternate;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes glowMove {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(0) scale(1.05);
+    opacity: 0.3;
+  }
+}
