@@ -1,4 +1,4 @@
-import {createBrowserRouter, RouterProvider} from "react-router-dom" 
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 // import { Button } from './components/ui/button'
 import './index.css'
 import './App.css'
@@ -11,38 +11,57 @@ import MyJobs from "./pages/MyJobs"
 import PostJob from "./pages/PostJob"
 import SavedJob from "./pages/SavedJobs"
 import { ThemeProvider } from "./components/theme-provider"
+import { ProtectedRoute } from "./components/protected-route"
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
-    children:[
+    children: [
       {
-        path:'/',
-        element:<LandingPage />
-      }, 
-      {
-        path:'/onboarding',
-        element:<Onboarding />
-      }, 
-      {
-        path:'/jobs',
-        element:<JobList />
-      }, 
-      {
-        path:'/jobs/:id',
-        element:<Jobs />
+        path: '/',
+        element: <LandingPage />
       },
       {
-        path:'/my-jobs',
-        element:<MyJobs />
-      }, 
+        path: '/onboarding',
+        element:
+          <ProtectedRoute>
+            <Onboarding />
+          </ProtectedRoute>
+      },
       {
-        path:'/post-job',
-        element:<PostJob />
-      }, 
+        path: '/jobs',
+        element:
+          <ProtectedRoute>
+            <JobList />
+          </ProtectedRoute>
+      },
       {
-        path:'/saved-job',
-        element:<SavedJob />
+        path: '/jobs/:id',
+        element:
+          <ProtectedRoute>
+            <Jobs />
+          </ProtectedRoute>
+      },
+      {
+        path: '/my-jobs',
+        element:
+          <ProtectedRoute>
+            <MyJobs />
+          </ProtectedRoute>
+      },
+      {
+        path: '/post-job',
+        element:
+          <ProtectedRoute>
+            <PostJob />
+          </ProtectedRoute>
+      },
+      {
+        path: '/saved-jobs',
+        element:
+          <ProtectedRoute>
+            <SavedJob />
+          </ProtectedRoute>
       }
     ]
   }
@@ -52,10 +71,10 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </ThemeProvider>
 
-   
+
   )
 }
 
