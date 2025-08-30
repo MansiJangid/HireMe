@@ -7,7 +7,7 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 // const supabase = createClient(supabaseUrl, supabaseKey);
 
 
-const supabaseClient = async (supabaseAccessToken: any)=>{
+const supabaseClient = (supabaseAccessToken: string)=>{
     const supabase = createClient(supabaseUrl, supabaseKey, {
         global:{
             headers: {

@@ -5,7 +5,7 @@ const useFetch = <T = any>(
     cb: any,
     options: Record<string, any> = {}
 ) => {
-    const [data, setData] = useState<T | null>(null);
+    const [data, setData] = useState<T>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
 
